@@ -1,0 +1,39 @@
+services:
+  sso:
+    image: ${SSO_IMAGE:-php-sso:local}
+    # Used by `docker compose build`: builds the release of php-sso named here straight from GitHub, so you need no checkout.
+    # To build from a checkout of your own instead, set SSO_SOURCE in .env to its folder (for example ../php-sso).
+    # Skip it by pointing SSO_IMAGE at a published image and running `docker compose pull`.
+    build:
+      context: ${SSO_SOURCE:-https://github.com/php-sso/php-sso.git#v0.1.0}
+      dockerfile: Dockerfile.production
+    container_name: sso
+    restart: unless-stopped
+    ports:
+      - "${SSO_PORT:-9000}:8080"
+    environment:
+      SSO_PUBLIC_URL: ${SSO_PUBLIC_URL:-http://localhost:9000}
+      SSO_APP_NAME: ${SSO_APP_NAME:-Single sign-on}
+      SSO_DEBUG: ${SSO_DEBUG:-0}
+      # Sign-in behaviour. Empty values mean "use the server default".
+      SSO_LOGIN_IDENTIFIER: ${SSO_LOGIN_IDENTIFIER:-}   # username (default), email or username_or_email
+      SSO_MFA_POLICY: ${SSO_MFA_POLICY:-}               # optional (default), admins or everyone
+      SSO_TRUSTED_PROXIES: ${SSO_TRUSTED_PROXIES:-}     # your reverse proxies, so IP rules see real addresses
+      # Sign in with another provider. A provider is on when its client id is set.
+      SSO_GOOGLE_CLIENT_ID: ${SSO_GOOGLE_CLIENT_ID:-}
+      SSO_GOOGLE_CLIENT_SECRET: ${SSO_GOOGLE_CLIENT_SECRET:-}
+      SSO_GITHUB_CLIENT_ID: ${SSO_GITHUB_CLIENT_ID:-}
+      SSO_GITHUB_CLIENT_SECRET: ${SSO_GITHUB_CLIENT_SECRET:-}
+      SSO_OIDC_ISSUER: ${SSO_OIDC_ISSUER:-}
+      SSO_OIDC_CLIENT_ID: ${SSO_OIDC_CLIENT_ID:-}
+      SSO_OIDC_CLIENT_SECRET: ${SSO_OIDC_CLIENT_SECRET:-}
+      SSO_OIDC_LABEL: ${SSO_OIDC_LABEL:-}
+      # Only read while the database is empty, to create the first administrator.
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Copy .env.example to .env and set ADMIN_PASSWORD}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@example.com}
+    volumes:
+      - sso-data:/app/var          # database and signing keys: back this up
+      - ./theme:/theme:ro          # your templates and assets
+
+volumes:
+  sso-data:

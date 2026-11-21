@@ -1,0 +1,4 @@
+{# A notice to accept before signing in (terms, privacy policy). One page per notice. #}
+{% extends '@sso/consent.html.twig' %}
+
+{% block after_form %}{{ parent() }}<p class="muted">Questions? Contact your administrator.</p>{% endblock %}

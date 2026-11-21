@@ -1,0 +1,7 @@
+{# Adds text around the built-in sign-in form. To change the form itself, copy it from the SSO
+   source (templates/pages/login.html.twig) and keep the field names. #}
+{% extends '@sso/login.html.twig' %}
+
+{% block intro %}<p class="muted">Use your Acme account to continue.</p>{% endblock %}
+
+{% block after_form %}<p class="muted">Trouble signing in? Ask your administrator.</p>{% endblock %}

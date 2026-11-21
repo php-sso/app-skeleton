@@ -1,0 +1,4 @@
+{# Setting up the authenticator app, when signing in and from the account page. #}
+{% extends '@sso/mfa_setup.html.twig' %}
+
+{% block intro %}{{ parent() }}<p class="muted">Any authenticator app works.</p>{% endblock %}

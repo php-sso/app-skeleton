@@ -1,0 +1,6 @@
+{# Wraps every page. Extend the built-in layout and change only what you need. #}
+{% extends '@sso/layout.html.twig' %}
+
+{% block logo %}<img src="{{ theme_asset('logo.svg') }}" alt="">{% endblock %}
+
+{% block footer %}&copy; Acme Inc. <a href="https://example.com/privacy">Privacy</a>{% endblock %}

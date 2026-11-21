@@ -1,0 +1,15 @@
+/* Linked on every page after the built-in styles. Change the variables to restyle everything. */
+:root {
+  --primary: #5b3df5;
+  --primary-strong: #4527d8;
+  /* --bg: #f6f5ff;
+  --surface: #ffffff;
+  --text: #1b1740;
+  --radius: 12px;
+  --font-display: "Your Font", system-ui, sans-serif; */
+}
+@media (prefers-color-scheme: dark) {
+  :root { --primary: #9d8cff; --primary-strong: #c0b5ff; --primary-text: #120c33; }
+}
+
+.brand img { height: 28px; width: auto; display: block; }

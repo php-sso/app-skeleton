@@ -1,0 +1,5 @@
+{# The account page. Override one section at a time: nav, profile, password, social, mfa or sessions.
+   Keep {{ parent() }} unless you rewrite the form and keep its field names (see ../README.md). #}
+{% extends '@sso/account.html.twig' %}
+
+{% block sessions %}{{ parent() }}<p class="muted">Not you? End that session and change your password.</p>{% endblock %}

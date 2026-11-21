@@ -1,0 +1,5 @@
+{# Sign-in step 3, only shown to people who set up two-step verification.
+   {{ parent() }} keeps the built-in text and lets you add to it. #}
+{% extends '@sso/login_mfa.html.twig' %}
+
+{% block after_form %}{{ parent() }}<p class="muted">Locked out? Ask your administrator to reset your two-step verification.</p>{% endblock %}

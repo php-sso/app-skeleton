@@ -1,0 +1,4 @@
+{# The recovery codes, shown once. #}
+{% extends '@sso/mfa_recovery.html.twig' %}
+
+{% block intro %}{{ parent() }}<p class="muted">Each code works once. Ask your administrator if you run out.</p>{% endblock %}
