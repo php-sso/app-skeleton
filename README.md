@@ -63,7 +63,7 @@ blocks to override, so adding a file replaces the whole page. Do that only when 
 yourself, and copy the built-in one as your starting point.
 
 Every variable, block and form field is documented in [theme/README.md](theme/README.md). That file is a copy of
-the SSO server's `docs/theming.md`: replace it when you update the server.
+the SSO server's [theming page](https://php-sso.github.io/php-sso/theming/) (`docs/content/theming.md` in that repository, without its front matter): replace it when you update the server.
 
 Keep `SSO_DEBUG=1` in `.env` while you work, so template mistakes show up in the browser. Turn it off in
 production: a broken template then falls back to the built-in page instead of breaking sign-in.
