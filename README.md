@@ -18,7 +18,7 @@ You get a Docker Compose file and a `theme/` folder. The server itself comes fro
 Discovery document for your apps: http://localhost:9000/.well-known/openid-configuration
 
 To update php-sso, change the version after the `#` in the `build.context` of `docker-compose.yml` (the release it builds, for
-example `v0.1.0`), then run `docker compose build` and `docker compose up -d`. Back up the `sso-data` volume first.
+example `v0.2.0`), then run `docker compose build` and `docker compose up -d`. Back up the `sso-data` volume first.
 
 ## Settings
 
