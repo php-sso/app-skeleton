@@ -5,7 +5,7 @@ services:
     # To build from a checkout of your own instead, set SSO_SOURCE in .env to its folder (for example ../php-sso).
     # Skip it by pointing SSO_IMAGE at a published image and running `docker compose pull`.
     build:
-      context: ${SSO_SOURCE:-https://github.com/php-sso/php-sso.git#v0.2.0}
+      context: ${SSO_SOURCE:-https://github.com/php-sso/php-sso.git#v0.4.1}
       dockerfile: Dockerfile.production
     container_name: sso
     restart: unless-stopped
